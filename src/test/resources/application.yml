@@ -1,0 +1,18 @@
+spring: #띄어쓰기 없음   별 말 없으면 메모리로 테스트함 (스프링 부트의 기능)
+#  datasource: #띄어쓰기 2칸
+#    url: jdbc:h2:mem:test #테스트모드로 돌릴때 외부 디비가 아니라 메모리 사용
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#  jpa: #띄어쓰기 2칸
+#    hibernate: #띄어쓰기 4칸
+#      ddl-auto: create #띄어쓰기 6칸
+#    properties: #띄어쓰기 4칸
+#     hibernate: #띄어쓰기 6칸
+# show_sql: true #띄어쓰기 8칸 sout로 출력 (logging debug로 대체)
+#         format_sql: true #띄어쓰기 8칸
+
+logging:
+  level: #띄어쓰기 없음
+    org.hibernate.SQL: debug #띄어쓰기 2칸
+    org.hibernate.type: trace #띄어쓰기 2칸  / sql 실행 파라미터의 타입을 말해줌
