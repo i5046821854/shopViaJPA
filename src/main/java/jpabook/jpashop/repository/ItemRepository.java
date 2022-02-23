@@ -20,7 +20,7 @@ public class ItemRepository {
             }
             else  //이미 있는 것 (영속성 컨텍스트에 있음)
             {
-                em.merge(item);  //업데이트트
+                em.merge(item);  //준영속 -> 영속으로 / 하지만 모든 필드를 다 교체하므로 값이 없는 경우는 null로 변경될 위험 / 항상 이거말고 변경감지 (itemService)를 사용하라
            }
     }
 

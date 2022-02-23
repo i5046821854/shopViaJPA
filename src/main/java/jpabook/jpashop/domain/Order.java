@@ -35,7 +35,7 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus staus;
+    private OrderStatus status;
 
 
     //연관관계 양방향 매핑  주로 주도권을 갖고 있는 쪽에서 설정해주는 것이 좋음
@@ -63,7 +63,7 @@ public class Order {
         for(OrderItem orderItem : orderItems){
             order.addOrderItem(orderItem);
         }
-        order.setStaus(OrderStatus.ORDER);
+        order.setStatus(OrderStatus.ORDER);
         order.setOrderDate(LocalDateTime.now());
         return order;
     }
@@ -77,7 +77,7 @@ public class Order {
         if(delivery.getStatus() == DeliveryStatus.COMP){
             throw new IllegalStateException("이미 배송 완료된 상품은 취소가 불가능합니다");
         }
-        this.setStaus(OrderStatus.CANCEL);
+        this.setStatus(OrderStatus.CANCEL);
         for (OrderItem orderItem : orderItems) {
             orderItem.cancel();
         }

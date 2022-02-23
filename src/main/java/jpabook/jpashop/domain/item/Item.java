@@ -47,4 +47,12 @@ public abstract class Item {
         setStockQuantity(restStk);
     }
 
+    public void changeItem(int price, String name, int qty)
+    {
+        setPrice(price);
+        setName(name);
+        setStockQuantity(qty);
+
+    }
+
 }
