@@ -54,4 +54,13 @@ public class MemberService {
     public Member findOne(Long memberId){
         return memberRepository.findOne(memberId);
     }
+    
+    @Transactional
+    public void update(Long id, String name){   //변경 감지 기법
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+
+        //반환 타입은 Member로 주지 않는 것이 좋음, 그렇게되면 command와 쿼리가 분리되지 않으므로 (member를 업데이트 함과 동시에 조회를 하게 되는 상황)
+        //그것보다는 컨트롤러에서 따로 findOne으로 찾아서 MEMBER를 반환받는게 나음
+    }
 }

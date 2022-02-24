@@ -52,4 +52,28 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대1000건
         return query.getResultList();
     }
+
+    public List<Order> findAllWithMemberDelivery() {  //fetch join을 사용하여 프록시 없이 다 가져옴
+        return em.createQuery("select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class).getResultList();
+    }
+
+
+    public List<Order> findAllwithItem() {
+        return em.createQuery("select distinct o from Order o " +   //distinct를 넣어주면 from뒤에 오는 엔티티가 중복일 경우 걸러줌
+                " join fetch o.member m" +
+                " join fetch o.delivery d" +
+                " join fetch o.orderItems oi" + //일대다니까 여기서 뻥튀기됨 => distinct로 해결
+                " join fetch oi.item i", Order.class).getResultList();
+    }
+
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {  //페이징
+        return em.createQuery("select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d", Order.class).setFirstResult(offset).setMaxResults(limit).getResultList();
+    }
+
+
 }
