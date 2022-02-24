@@ -3,12 +3,14 @@ package jpabook.jpashop.domain.item;
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import lombok.Data;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@BatchSize(size = 100)
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)  //상속 시 한 테이블에 모두 몰아 넣음
