@@ -10,6 +10,7 @@ import jpabook.jpashop.repository.OrderSimpleApiQuery.OrderFlatDto;
 import jpabook.jpashop.repository.OrderSimpleApiQuery.OrderItemQueryDto;
 import jpabook.jpashop.repository.OrderSimpleApiQuery.OrderQueryDto;
 import jpabook.jpashop.repository.OrderSimpleApiQuery.OrderQueryRepository;
+import jpabook.jpashop.service.OrderQueryService;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -53,8 +54,12 @@ public class OrderAPiController {
         return all;
     }
 
+    private final OrderQueryService orderQueryService;
+
     @GetMapping("/api/v3/orders")   //fetch join으로 해결 / 하지만 fetch join은 페이징 불가하다는 단점이 (일대다 일때만)
     public List<OrderDto> ordersV3(){
+        //return orderQueryService.ordersV3(); osiv가 꺼져있다면, 한 트랜잭션 안에서 모든 데이터 처리가 끝나야하므로 다른 서비스를 만들어서 그 서비스의 트랜젝션에서 이를 처리하도록 해야한다.
+
         List<Order> orders = orderRepository.findAllwithItem();
         List<OrderDto> all = orders.stream().map(o -> new OrderDto(o)).collect(Collectors.toList());
         return all;

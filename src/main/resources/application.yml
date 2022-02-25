@@ -12,7 +12,7 @@ spring: #띄어쓰기 없음
 # show_sql: true #띄어쓰기 8칸 sout로 출력 (logging debug로 대체)
           format_sql: true #띄어쓰기 8칸
           default_batch_fetch_size: 100  #fetch join에서 in 안의 개수 , 숫자에 대해서는 미니멈은 없지만 맥시멈은 대게 1000
-
+    # open-in-view: false  #트랜젝션 기준으로 데이터 베이스 커넥션이 끊기는가
 logging:
   level: #띄어쓰기 없음
     org.hibernate.SQL: debug #띄어쓰기 2칸
