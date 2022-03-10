@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
 
 import static org.junit.jupiter.api.Assertions.*;
 //외부 디비 말고 메모리에 테스트 데이터를 조작하고 싶다? >> test 밑에 resources 디렉토리를 만들고 그 밑에 application.yml을 만들어줌 그 뒤는 해당 파일 참조
-@SpringBootTest
+@SpringBootTest //스프링의 기능을 이용하기 위해 test에 넣어줌  
 @Transactional  //자동 롤백
 class MemberServiceTest {
 
