@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+* DTO로 직접 조회하는 경우 처리
+**/
 @Repository
 @RequiredArgsConstructor
 public class OrderQueryRepository {
